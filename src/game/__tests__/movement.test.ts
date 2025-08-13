@@ -204,7 +204,7 @@ describe('Movement Logic', () => {
         return blockedPositions.some(blocked => blocked.x === pos.x && blocked.y === pos.y);
       };
       
-      const validMoves = getValidMoves(knightPos, 'pawn', boardSize, hasEnemyAtPosition);
+      getValidMoves(knightPos, 'pawn', boardSize, hasEnemyAtPosition);
       // Note: This test uses 'pawn' which is incorrect - should be 'knight'
       // But keeping to test the function behavior
     });

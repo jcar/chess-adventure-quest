@@ -18,7 +18,7 @@ describe('Level Data', () => {
     });
 
     it('should have valid board sizes', () => {
-      LEVELS.forEach((level, index) => {
+      LEVELS.forEach((level) => {
         expect(level.boardSize.width).toBeGreaterThan(0);
         expect(level.boardSize.height).toBeGreaterThan(0);
         expect(level.boardSize.width).toBeLessThanOrEqual(10); // Reasonable upper bound
@@ -49,7 +49,7 @@ describe('Level Data', () => {
 
   describe('validateLevel', () => {
     it('should validate all existing levels', () => {
-      LEVELS.forEach((level, index) => {
+      LEVELS.forEach((level) => {
         expect(validateLevel(level)).toBe(true);
       });
     });

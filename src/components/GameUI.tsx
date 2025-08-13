@@ -6,8 +6,6 @@ import './GameUI.css';
 const GameUI: React.FC = () => {
   const {
     currentLevel,
-    coinsCollected,
-    totalCoins,
     playerPieceType,
     gameState,
     resetLevel,

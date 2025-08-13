@@ -2,9 +2,9 @@ import type { Position, Entity } from '../types/game';
 
 export function calculateEnemyMoves(
   enemies: Entity[],
-  playerPosition: Position,
-  boardSize: { width: number; height: number },
-  getEntityAt: (pos: Position) => Entity | null
+  _playerPosition: Position,
+  _boardSize: { width: number; height: number },
+  _getEntityAt: (pos: Position) => Entity | null
 ): Map<string, Position> {
   const moves = new Map<string, Position>();
 

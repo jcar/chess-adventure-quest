@@ -43,7 +43,7 @@ describe('Game Integration Tests', () => {
       
       // After capturing slime, it's removed
       slimeAlive = false;
-      const hasEnemyAfterCapture = (pos: Position) => false;
+      const hasEnemyAfterCapture = (_pos: Position) => false;
       
       // Move 2: Pawn (2,2) -> (2,1) - Move forward
       const move2 = { x: 2, y: 1 };

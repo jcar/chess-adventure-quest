@@ -1,6 +1,8 @@
 # Chess Adventure Quest 🏰♞
 
-A kid-friendly browser-based chess learning game built with React, TypeScript, and Vite. Players control individual chess pieces (Knight and Pawn) on small boards, collecting coins and avoiding enemies while learning how each piece moves!
+## 🎮 [**PLAY NOW - Live Demo**](https://jcar.github.io/chess-adventure-quest/)
+
+A kid-friendly browser-based chess learning game built with React, TypeScript, and Vite. Players control individual chess pieces (Knight and Pawn) on small boards, navigating obstacles to reach the exit while learning how each piece moves!
 
 ## 🎮 Game Features
 
@@ -50,9 +52,8 @@ A kid-friendly browser-based chess learning game built with React, TypeScript, a
 - **Keyboard**: Use arrow keys to move (if it's a valid move for your piece)
 
 ### Game Objectives
-1. **Collect all coins** (🪙) on the board
-2. **Reach the exit** (🚪) after collecting all coins
-3. **Navigate around or capture enemies**:
+1. **Reach the exit** (🚪) to complete the level
+2. **Navigate around or capture enemies**:
    - **Slimes** (🟢): Stationary obstacles that can be captured or avoided
 
 ### Piece Movement Rules
@@ -61,8 +62,8 @@ A kid-friendly browser-based chess learning game built with React, TypeScript, a
 
 ### Levels
 - **Level 1**: Knight Tutorial - Learn basic L-shaped movement
-- **Level 2**: Pawn Tutorial - Learn forward movement and diagonal capture
-- **Level 3+**: Progressive challenges with enemies and multiple coins
+- **Level 2**: Pawn Tutorial - Learn forward movement and diagonal capture  
+- **Level 3+**: Progressive challenges with enemies and strategic obstacles
 
 ## 🏗️ Project Structure
 

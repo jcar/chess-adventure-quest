@@ -3,8 +3,8 @@ import type { Level } from '../types/game';
 export const LEVELS: Level[] = [
   {
     id: 'knight-tutorial',
-    name: 'Knight Training',
-    description: 'Learn how the Knight moves in an L-shape! Just reach the exit.',
+    name: 'Knight First Steps',
+    description: 'Learn the Knight\'s L-shaped movement! Go around the slime to reach the exit.',
     boardSize: { width: 4, height: 4 },
     player: {
       position: { x: 0, y: 3 },
@@ -12,11 +12,13 @@ export const LEVELS: Level[] = [
     },
     coins: [],
     exit: { x: 3, y: 0 },
-    enemies: []
+    enemies: [
+      { type: 'slime', position: { x: 1, y: 1 } }
+    ]
   },
   {
     id: 'pawn-tutorial',
-    name: 'Pawn Practice',
+    name: 'Pawn Power',
     description: 'Learn how the Pawn captures diagonally! Defeat the slime and reach the exit.',
     boardSize: { width: 4, height: 4 },
     player: {
@@ -30,9 +32,9 @@ export const LEVELS: Level[] = [
     ]
   },
   {
-    id: 'knight-challenge-1',
-    name: 'Knight Obstacle Course',
-    description: 'Navigate around or capture the slimes to reach the exit!',
+    id: 'knight-capture',
+    name: 'Knight vs Slimes',
+    description: 'Show your Knight skills! Capture slimes or go around them.',
     boardSize: { width: 5, height: 5 },
     player: {
       position: { x: 0, y: 4 },
@@ -41,32 +43,30 @@ export const LEVELS: Level[] = [
     coins: [],
     exit: { x: 4, y: 0 },
     enemies: [
-      { type: 'slime', position: { x: 1, y: 2 } },
-      { type: 'slime', position: { x: 3, y: 3 } },
-      { type: 'slime', position: { x: 2, y: 1 } }
+      { type: 'slime', position: { x: 2, y: 3 } },
+      { type: 'slime', position: { x: 1, y: 1 } }
     ]
   },
   {
-    id: 'pawn-challenge-1',
-    name: 'Pawn Power',
-    description: 'Use your Pawn\'s diagonal capture to clear the path to the exit!',
+    id: 'pawn-challenge',
+    name: 'Pawn\'s Journey',
+    description: 'Navigate your Pawn carefully! Capture diagonally when needed.',
     boardSize: { width: 5, height: 5 },
     player: {
-      position: { x: 2, y: 4 },
+      position: { x: 0, y: 4 },
       pieceType: 'pawn'
     },
     coins: [],
-    exit: { x: 2, y: 0 },
+    exit: { x: 4, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 1, y: 3 } },
-      { type: 'slime', position: { x: 3, y: 2 } },
-      { type: 'slime', position: { x: 2, y: 1 } }
+      { type: 'slime', position: { x: 3, y: 1 } }
     ]
   },
   {
-    id: 'mixed-challenge',
-    name: 'The Grand Adventure',
-    description: 'Use Knight moves to navigate through the slime maze to reach the exit!',
+    id: 'grand-finale',
+    name: 'Chess Master Challenge',
+    description: 'The ultimate test! Use all your chess knowledge to reach the exit.',
     boardSize: { width: 6, height: 6 },
     player: {
       position: { x: 0, y: 5 },
@@ -75,12 +75,11 @@ export const LEVELS: Level[] = [
     coins: [],
     exit: { x: 5, y: 0 },
     enemies: [
-      { type: 'slime', position: { x: 1, y: 3 } },
-      { type: 'slime', position: { x: 2, y: 4 } },
-      { type: 'slime', position: { x: 3, y: 1 } },
-      { type: 'slime', position: { x: 4, y: 3 } },
+      { type: 'slime', position: { x: 1, y: 4 } },
       { type: 'slime', position: { x: 2, y: 2 } },
-      { type: 'slime', position: { x: 0, y: 1 } }
+      { type: 'slime', position: { x: 3, y: 4 } },
+      { type: 'slime', position: { x: 4, y: 2 } },
+      { type: 'slime', position: { x: 1, y: 0 } }
     ]
   }
 ];

@@ -82,10 +82,10 @@ export const LEVELS: Level[] = [
     ],
     exit: { x: 4, y: 0 },
     enemies: [
-      { type: 'goblin', position: { x: 2, y: 3 } },
-      { type: 'goblin', position: { x: 4, y: 4 } },
+      { type: 'goblin', position: { x: 2, y: 1 } },
+      { type: 'goblin', position: { x: 3, y: 4 } },
       { type: 'slime', position: { x: 1, y: 2 } },
-      { type: 'slime', position: { x: 3, y: 1 } }
+      { type: 'slime', position: { x: 4, y: 3 } }
     ]
   }
 ];

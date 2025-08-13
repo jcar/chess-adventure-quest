@@ -1,0 +1,147 @@
+.game-ui {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.level-info h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--accent-color);
+  font-size: 1.8em;
+}
+
+.level-description {
+  margin: 0;
+  font-size: 1.1em;
+  color: var(--text-dark);
+  font-style: italic;
+}
+
+.game-stats {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.piece-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.piece-icon {
+  font-size: 3em;
+  margin-bottom: 0.3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.piece-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+
+.coins-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--success-color);
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.coins-emoji {
+  font-size: 1.5em;
+}
+
+.coins-count {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.movement-hint {
+  background: rgba(78, 205, 196, 0.9);
+  padding: 1.2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.hint-text {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.1em;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.controls-hint {
+  margin: 0;
+  font-size: 1em;
+  color: var(--text-dark);
+  font-style: italic;
+}
+
+.game-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-controls button {
+  min-width: 180px;
+  padding: 1rem 1.5rem;
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .game-stats {
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .game-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .game-controls button {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-ui {
+    padding: 0.5rem;
+  }
+  
+  .game-header {
+    padding: 1rem;
+  }
+  
+  .game-stats {
+    gap: 2rem;
+  }
+}

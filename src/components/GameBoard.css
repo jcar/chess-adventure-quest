@@ -1,0 +1,28 @@
+.game-board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.game-board {
+  display: grid;
+  gap: 2px;
+  padding: 1rem;
+  background: var(--text-dark);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  width: 400px;
+  height: 400px;
+}
+
+@media (max-width: 600px) {
+  .game-board-container {
+    padding: 1rem;
+  }
+  
+  .game-board {
+    max-width: 90vw;
+    max-height: 90vw;
+  }
+}

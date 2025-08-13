@@ -51,20 +51,19 @@ export const LEVELS: Level[] = [
   {
     id: 'pawn-challenge-1',
     name: 'Pawn Power',
-    description: 'Guide your Pawn through enemy territory!',
+    description: 'Move forward to collect coins, capture diagonally to defeat enemies!',
     boardSize: { width: 5, height: 5 },
     player: {
-      position: { x: 1, y: 4 },
+      position: { x: 2, y: 4 },
       pieceType: 'pawn'
     },
     coins: [
-      { x: 1, y: 2 },
-      { x: 3, y: 1 }
+      { x: 2, y: 3 },
+      { x: 2, y: 1 }
     ],
-    exit: { x: 3, y: 0 },
+    exit: { x: 2, y: 0 },
     enemies: [
-      { type: 'slime', position: { x: 2, y: 3 } },
-      { type: 'slime', position: { x: 0, y: 1 } }
+      { type: 'slime', position: { x: 3, y: 2 } }
     ]
   },
   {

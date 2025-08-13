@@ -23,7 +23,7 @@ A kid-friendly browser-based chess learning game built with React, TypeScript, a
 - **Collect all coins** (🪙) on each level
 - **Reach the exit** (🚪) to complete the level
 - **Learn** how Knight (L-shaped) and Pawn (forward + diagonal capture) pieces move
-- **Avoid or defeat** enemies: Slimes (🟢) and Goblins (👺)
+- **Navigate around or capture** slime obstacles (🟢)
 
 ## 📋 Available Scripts
 

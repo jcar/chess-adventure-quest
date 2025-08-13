@@ -23,7 +23,7 @@ const DebugInfo: React.FC = () => {
 
   const hasEnemyAtPosition = (pos: { x: number; y: number }): boolean => {
     const entity = getEntityAt(pos);
-    return entity !== null && (entity.type === 'slime' || entity.type === 'goblin');
+    return entity !== null && entity.type === 'slime';
   };
 
   const validMoves = getValidMoves(

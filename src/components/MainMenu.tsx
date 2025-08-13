@@ -27,7 +27,7 @@ const MainMenu: React.FC = () => {
     <div className="main-menu">
       <h1>Chess Adventure Quest</h1>
       <p className="subtitle">
-        Learn chess piece movements while collecting coins and avoiding enemies!
+        Learn chess piece movements while navigating obstacles to reach the exit!
       </p>
       
       <div className="level-selection">
@@ -41,9 +41,9 @@ const MainMenu: React.FC = () => {
         <h3>How to Play</h3>
         <ul>
           <li>🏰 Move your chess piece using click/tap or arrow keys</li>
-          <li>🪙 Collect all coins to unlock the exit</li>
-          <li>🏃 Reach the exit to complete the level</li>
-          <li>⚔️ Avoid or defeat enemies (slimes and goblins)</li>
+          <li>🚪 Reach the exit to complete the level</li>
+          <li>🟢 Navigate around or capture slimes as obstacles</li>
+          <li>♘ Knight moves in L-shapes, Pawn moves forward (captures diagonally)</li>
           <li>🧠 Each piece has unique movement rules!</li>
         </ul>
       </div>

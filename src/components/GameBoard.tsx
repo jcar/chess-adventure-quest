@@ -24,7 +24,7 @@ const GameBoard: React.FC = () => {
 
   const hasEnemyAtPosition = useCallback((pos: Position): boolean => {
     const entity = getEntityAt(pos);
-    return entity !== null && (entity.type === 'slime' || entity.type === 'goblin');
+    return entity !== null && entity.type === 'slime';
   }, [getEntityAt]);
 
   const validMoves = getValidMoves(

@@ -8,7 +8,7 @@ A kid-friendly browser-based chess learning game built with React, TypeScript, a
 - **Kid-Friendly**: Colorful UI with emojis, animations, and simple controls
 - **Progressive Difficulty**: Start with tutorials and advance through challenging levels
 - **Multiple Pieces**: Master both Knight (L-shaped moves) and Pawn (forward + diagonal capture) movement patterns
-- **Enemy AI**: Face off against Slimes (stationary) and Goblins (chase the player)
+- **Enemy AI**: Navigate around Slimes (stationary obstacles)
 - **Responsive Design**: Works on desktop and mobile devices
 
 ## 🚀 Quick Start
@@ -52,9 +52,8 @@ A kid-friendly browser-based chess learning game built with React, TypeScript, a
 ### Game Objectives
 1. **Collect all coins** (🪙) on the board
 2. **Reach the exit** (🚪) after collecting all coins
-3. **Avoid or defeat enemies**:
-   - **Slimes** (🟢): Stationary obstacles
-   - **Goblins** (👺): Chase you one square at a time
+3. **Navigate around or capture enemies**:
+   - **Slimes** (🟢): Stationary obstacles that can be captured or avoided
 
 ### Piece Movement Rules
 - **Knight** (♘): Moves in an L-shape (2 squares in one direction, then 1 square perpendicular)
@@ -131,7 +130,7 @@ Levels are defined in `src/levels/levelData.ts`. Each level requires:
   exit: { x: 3, y: 0 },
   enemies: [
     { type: 'slime', position: { x: 1, y: 2 } },
-    { type: 'goblin', position: { x: 2, y: 3 } }
+    { type: 'slime', position: { x: 2, y: 3 } }
   ]
 }
 ```

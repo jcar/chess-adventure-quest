@@ -31,8 +31,6 @@ const BoardCell: React.FC<BoardCellProps> = ({
         return '🚪';
       case 'slime':
         return '🟢';
-      case 'goblin':
-        return '👺';
       default:
         return '';
     }

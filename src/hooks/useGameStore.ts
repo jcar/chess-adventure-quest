@@ -51,7 +51,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     level.enemies.forEach((enemy, index) => {
       board.push({
         id: `${enemy.type}-${index}`,
-        type: enemy.type as 'slime' | 'goblin',
+        type: enemy.type as 'slime',
         position: { ...enemy.position }
       });
     });
@@ -80,7 +80,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
 
     const hasEnemyAtPosition = (pos: Position): boolean => {
       const entity = getEntityAt(pos);
-      return entity !== null && (entity.type === 'slime' || entity.type === 'goblin');
+      return entity !== null && entity.type === 'slime';
     };
 
     // Validate the move
@@ -116,7 +116,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
 
     // Check for enemy capture (if player moved to enemy position)
     const enemyAtPosition = newBoard.find(entity => 
-      (entity.type === 'slime' || entity.type === 'goblin') &&
+      entity.type === 'slime' &&
       entity.position.x === newPosition.x && 
       entity.position.y === newPosition.y
     );
@@ -126,7 +126,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     }
 
     // Move enemies
-    const enemies = newBoard.filter(entity => entity.type === 'slime' || entity.type === 'goblin');
+    const enemies = newBoard.filter(entity => entity.type === 'slime');
     const enemyMoves = calculateEnemyMoves(
       enemies,
       newPosition,
@@ -147,7 +147,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     // Check if player was captured after enemy moves
     const playerCaptured = checkPlayerCaptured(
       newPosition,
-      newBoard.filter(entity => entity.type === 'slime' || entity.type === 'goblin')
+      newBoard.filter(entity => entity.type === 'slime')
     );
 
     // Check win condition (just reach the exit)

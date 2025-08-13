@@ -1,6 +1,6 @@
 export type PieceType = 'knight' | 'pawn';
 
-export type EntityType = 'player' | 'coin' | 'exit' | 'slime' | 'goblin';
+export type EntityType = 'player' | 'coin' | 'exit' | 'slime';
 
 export interface Position {
   x: number;
@@ -26,7 +26,7 @@ export interface Level {
   coins: Position[];
   exit: Position;
   enemies: Array<{
-    type: 'slime' | 'goblin';
+    type: 'slime';
     position: Position;
   }>;
 }

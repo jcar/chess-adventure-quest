@@ -31,8 +31,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'knight-challenge-1',
-    name: 'Knight vs Goblins',
-    description: 'Use your Knight to outmaneuver the goblins!',
+    name: 'Knight Obstacle Course',
+    description: 'Navigate around the slimes to collect coins and reach the exit!',
     boardSize: { width: 5, height: 5 },
     player: {
       position: { x: 0, y: 4 },
@@ -44,8 +44,9 @@ export const LEVELS: Level[] = [
     ],
     exit: { x: 4, y: 0 },
     enemies: [
-      { type: 'goblin', position: { x: 1, y: 2 } },
-      { type: 'slime', position: { x: 3, y: 3 } }
+      { type: 'slime', position: { x: 1, y: 2 } },
+      { type: 'slime', position: { x: 3, y: 3 } },
+      { type: 'slime', position: { x: 2, y: 0 } }
     ]
   },
   {
@@ -69,23 +70,25 @@ export const LEVELS: Level[] = [
   {
     id: 'mixed-challenge',
     name: 'The Grand Adventure',
-    description: 'A challenging level to test all your skills!',
-    boardSize: { width: 5, height: 5 },
+    description: 'Use Knight moves to navigate around all the slimes and collect every coin!',
+    boardSize: { width: 6, height: 6 },
     player: {
-      position: { x: 0, y: 4 },
+      position: { x: 0, y: 5 },
       pieceType: 'knight'
     },
     coins: [
       { x: 1, y: 1 },
-      { x: 3, y: 3 },
-      { x: 4, y: 2 }
+      { x: 3, y: 2 },
+      { x: 4, y: 4 },
+      { x: 2, y: 0 }
     ],
-    exit: { x: 4, y: 0 },
+    exit: { x: 5, y: 0 },
     enemies: [
-      { type: 'goblin', position: { x: 2, y: 1 } },
-      { type: 'goblin', position: { x: 3, y: 4 } },
-      { type: 'slime', position: { x: 1, y: 2 } },
-      { type: 'slime', position: { x: 4, y: 3 } }
+      { type: 'slime', position: { x: 1, y: 3 } },
+      { type: 'slime', position: { x: 2, y: 4 } },
+      { type: 'slime', position: { x: 3, y: 1 } },
+      { type: 'slime', position: { x: 4, y: 2 } },
+      { type: 'slime', position: { x: 0, y: 2 } }
     ]
   }
 ];

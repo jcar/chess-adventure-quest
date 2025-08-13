@@ -57,10 +57,9 @@ export const LEVELS: Level[] = [
       pieceType: 'pawn'
     },
     coins: [],
-    exit: { x: 2, y: 0 },
+    exit: { x: 2, y: 1 },
     enemies: [
-      { type: 'slime', position: { x: 2, y: 3 } },
-      { type: 'slime', position: { x: 1, y: 1 } }
+      { type: 'slime', position: { x: 2, y: 2 } }
     ]
   },
   {

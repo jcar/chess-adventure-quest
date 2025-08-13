@@ -4,26 +4,26 @@ export const LEVELS: Level[] = [
   {
     id: 'knight-tutorial',
     name: 'Knight Training',
-    description: 'Learn how the Knight moves in an L-shape! Collect the coin and reach the exit.',
+    description: 'Learn how the Knight moves in an L-shape! Just reach the exit.',
     boardSize: { width: 4, height: 4 },
     player: {
       position: { x: 0, y: 3 },
       pieceType: 'knight'
     },
-    coins: [{ x: 2, y: 1 }],
+    coins: [],
     exit: { x: 3, y: 0 },
     enemies: []
   },
   {
     id: 'pawn-tutorial',
     name: 'Pawn Practice',
-    description: 'Learn how the Pawn moves forward and captures diagonally! Defeat the slime and collect the coin.',
+    description: 'Learn how the Pawn captures diagonally! Defeat the slime and reach the exit.',
     boardSize: { width: 4, height: 4 },
     player: {
       position: { x: 1, y: 3 },
       pieceType: 'pawn'
     },
-    coins: [{ x: 2, y: 1 }],
+    coins: [],
     exit: { x: 2, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 2, y: 2 } }
@@ -32,63 +32,55 @@ export const LEVELS: Level[] = [
   {
     id: 'knight-challenge-1',
     name: 'Knight Obstacle Course',
-    description: 'Navigate around the slimes to collect coins and reach the exit!',
+    description: 'Navigate around or capture the slimes to reach the exit!',
     boardSize: { width: 5, height: 5 },
     player: {
       position: { x: 0, y: 4 },
       pieceType: 'knight'
     },
-    coins: [
-      { x: 2, y: 2 },
-      { x: 4, y: 1 }
-    ],
+    coins: [],
     exit: { x: 4, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 1, y: 2 } },
       { type: 'slime', position: { x: 3, y: 3 } },
-      { type: 'slime', position: { x: 2, y: 0 } }
+      { type: 'slime', position: { x: 2, y: 1 } }
     ]
   },
   {
     id: 'pawn-challenge-1',
     name: 'Pawn Power',
-    description: 'Capture the slime blocking your path, then collect the coins!',
+    description: 'Use your Pawn\'s diagonal capture to clear the path to the exit!',
     boardSize: { width: 5, height: 5 },
     player: {
-      position: { x: 1, y: 4 },
+      position: { x: 2, y: 4 },
       pieceType: 'pawn'
     },
-    coins: [
-      { x: 2, y: 2 },
-      { x: 2, y: 1 }
-    ],
+    coins: [],
     exit: { x: 2, y: 0 },
     enemies: [
-      { type: 'slime', position: { x: 2, y: 3 } }
+      { type: 'slime', position: { x: 1, y: 3 } },
+      { type: 'slime', position: { x: 3, y: 2 } },
+      { type: 'slime', position: { x: 2, y: 1 } }
     ]
   },
   {
     id: 'mixed-challenge',
     name: 'The Grand Adventure',
-    description: 'Use Knight moves to navigate around all the slimes and collect every coin!',
+    description: 'Use Knight moves to navigate through the slime maze to reach the exit!',
     boardSize: { width: 6, height: 6 },
     player: {
       position: { x: 0, y: 5 },
       pieceType: 'knight'
     },
-    coins: [
-      { x: 1, y: 1 },
-      { x: 3, y: 2 },
-      { x: 4, y: 4 },
-      { x: 2, y: 0 }
-    ],
+    coins: [],
     exit: { x: 5, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 1, y: 3 } },
       { type: 'slime', position: { x: 2, y: 4 } },
       { type: 'slime', position: { x: 3, y: 1 } },
-      { type: 'slime', position: { x: 4, y: 2 } },
-      { type: 'slime', position: { x: 0, y: 2 } }
+      { type: 'slime', position: { x: 4, y: 3 } },
+      { type: 'slime', position: { x: 2, y: 2 } },
+      { type: 'slime', position: { x: 0, y: 1 } }
     ]
   }
 ];

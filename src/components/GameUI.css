@@ -55,24 +55,24 @@
   letter-spacing: 1px;
 }
 
-.coins-info {
+.objective-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--success-color);
+  background: var(--primary-color);
   padding: 0.8rem 1.2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
 
-.coins-emoji {
+.objective-emoji {
   font-size: 1.5em;
 }
 
-.coins-count {
-  font-size: 1.3em;
+.objective-text {
+  font-size: 1.1em;
   font-weight: 600;
-  color: var(--text-dark);
+  color: white;
 }
 
 .movement-hint {

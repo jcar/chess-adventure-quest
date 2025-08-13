@@ -50,9 +50,9 @@ const GameUI: React.FC = () => {
             <span className="piece-name">{playerPieceType.toUpperCase()}</span>
           </div>
           
-          <div className="coins-info">
-            <span className="coins-emoji">🪙</span>
-            <span className="coins-count">{coinsCollected}/{totalCoins}</span>
+          <div className="objective-info">
+            <span className="objective-emoji">🚪</span>
+            <span className="objective-text">Reach the Exit!</span>
           </div>
         </div>
       </div>

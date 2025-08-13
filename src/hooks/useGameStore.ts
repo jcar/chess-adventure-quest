@@ -150,15 +150,14 @@ export const useGameStore = create<GameStore>((set, get) => ({
       newBoard.filter(entity => entity.type === 'slime' || entity.type === 'goblin')
     );
 
-    // Check win condition (all coins collected and at exit)
+    // Check win condition (just reach the exit)
     const atExit = newBoard.some(entity => 
       entity.type === 'exit' && 
       entity.position.x === newPosition.x && 
       entity.position.y === newPosition.y
     );
     
-    const allCoinsCollected = newCoinsCollected === state.totalCoins;
-    const hasWon = atExit && allCoinsCollected;
+    const hasWon = atExit;
 
     // Update state
     set({

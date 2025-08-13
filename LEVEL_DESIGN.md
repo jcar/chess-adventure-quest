@@ -39,16 +39,17 @@
 
 ---
 
-### Level 4: Pawn's Journey (5x5)
+### Level 4: Pawn's Journey (4x5)
 ```
-. . . . 🚪   ← Exit at (4,0)
-. . . 🟢 .   ← Slime at (3,1) - forces diagonal thinking
-. . . . .
-. 🟢 . . .   ← Slime at (1,3) - can be captured diagonally
-♙ . . . .   ← Pawn starts at (0,4)
+. . 🚪 .   ← Exit at (2,0)
+. 🟢 . .   ← Slime at (1,1) - optional capture target
+. . . .
+. . 🟢 .   ← Slime at (2,3) - blocks forward path, must capture diagonally
+. ♙ . .   ← Pawn starts at (1,4)
 ```
-**Learning Goal**: Complex pawn pathfinding with strategic captures
-**Strategy**: Must plan ahead - when to capture vs. when to move forward
+**Learning Goal**: Strategic pawn captures to clear the path
+**Strategy**: Must capture the blocking slime diagonally to reach exit
+**Solution**: Capture slime at (2,3), then move forward to (2,2), (2,1), (2,0) - exit!
 
 ---
 

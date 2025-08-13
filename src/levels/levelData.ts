@@ -51,16 +51,16 @@ export const LEVELS: Level[] = [
     id: 'pawn-challenge',
     name: 'Pawn\'s Journey',
     description: 'Navigate your Pawn carefully! Capture diagonally when needed.',
-    boardSize: { width: 5, height: 5 },
+    boardSize: { width: 4, height: 5 },
     player: {
-      position: { x: 0, y: 4 },
+      position: { x: 1, y: 4 },
       pieceType: 'pawn'
     },
     coins: [],
-    exit: { x: 4, y: 0 },
+    exit: { x: 2, y: 0 },
     enemies: [
-      { type: 'slime', position: { x: 1, y: 3 } },
-      { type: 'slime', position: { x: 3, y: 1 } }
+      { type: 'slime', position: { x: 2, y: 3 } },
+      { type: 'slime', position: { x: 1, y: 1 } }
     ]
   },
   {

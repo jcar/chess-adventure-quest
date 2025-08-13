@@ -59,9 +59,9 @@ export const LEVELS: Level[] = [
     },
     coins: [
       { x: 2, y: 2 },
-      { x: 2, y: 0 }
+      { x: 2, y: 1 }
     ],
-    exit: { x: 3, y: 0 },
+    exit: { x: 2, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 2, y: 3 } }
     ]

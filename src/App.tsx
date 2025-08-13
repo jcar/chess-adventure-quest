@@ -3,7 +3,6 @@ import MainMenu from './components/MainMenu';
 import GameUI from './components/GameUI';
 import GameBoard from './components/GameBoard';
 import GameModal from './components/GameModal';
-import DebugInfo from './components/DebugInfo';
 import './App.css';
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
         </div>
       )}
       <GameModal />
-      <DebugInfo />
     </div>
   );
 }

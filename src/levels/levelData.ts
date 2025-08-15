@@ -3,14 +3,16 @@ import type { Level } from '../types/game';
 export const LEVELS: Level[] = [
   {
     id: 'knight-tutorial',
-    name: 'Knight First Steps',
-    description: 'Learn the Knight\'s L-shaped movement! Go around the slime to reach the exit.',
+    name: '🌟 Sir Hopscotch\'s First Quest',
+    description: 'Help Sir Hopscotch learn his magical L-shaped jumps! Hop around the silly green slime to find the golden door!',
     boardSize: { width: 4, height: 4 },
     player: {
       position: { x: 0, y: 3 },
       pieceType: 'knight'
     },
-    coins: [],
+    coins: [
+      { x: 2, y: 1 }  // A treasure to collect on the way!
+    ],
     exit: { x: 3, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 1, y: 1 } }
@@ -18,14 +20,17 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'pawn-tutorial',
-    name: 'Pawn Power',
-    description: 'Learn how the Pawn captures diagonally! Defeat the slime and reach the exit.',
+    name: '⚡ Pawny\'s Big Adventure',
+    description: 'Join Pawny the Brave on his first quest! March forward and use your diagonal power to defeat the goofy slime!',
     boardSize: { width: 4, height: 4 },
     player: {
       position: { x: 1, y: 3 },
       pieceType: 'pawn'
     },
-    coins: [],
+    coins: [
+      { x: 0, y: 1 },  // Treasure hidden to the side
+      { x: 3, y: 1 }   // Another treasure to discover
+    ],
     exit: { x: 2, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 2, y: 2 } }
@@ -33,14 +38,18 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'knight-capture',
-    name: 'Knight vs Slimes',
-    description: 'Show your Knight skills! Capture slimes or go around them.',
+    name: '🗡️ Sir Hopscotch vs. Giggle Slimes',
+    description: 'The giggly slimes are blocking the path to Rainbow Valley! Use your L-shaped magic to outsmart them!',
     boardSize: { width: 5, height: 5 },
     player: {
       position: { x: 0, y: 4 },
       pieceType: 'knight'
     },
-    coins: [],
+    coins: [
+      { x: 3, y: 3 },  // Treasure near the slimes
+      { x: 1, y: 2 },  // Hidden gem
+      { x: 4, y: 1 }   // Final treasure before exit
+    ],
     exit: { x: 4, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 2, y: 3 } },
@@ -49,14 +58,18 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'pawn-challenge',
-    name: 'Pawn\'s Journey',
-    description: 'Navigate your Pawn carefully! Capture diagonally when needed.',
+    name: '🏆 Pawny\'s Heroic Crystal Cave',
+    description: 'Brave Pawny must rescue his friend from the Crystal Caves! Collect the magical crystals and defeat the cave slime!',
     boardSize: { width: 4, height: 5 },
     player: {
       position: { x: 1, y: 4 },
       pieceType: 'pawn'
     },
-    coins: [],
+    coins: [
+      { x: 0, y: 2 },  // Crystal treasure
+      { x: 3, y: 3 },  // Another crystal  
+      { x: 3, y: 0 }   // Friend rescue token (represented as coin)
+    ],
     exit: { x: 2, y: 1 },
     enemies: [
       { type: 'slime', position: { x: 2, y: 2 } }
@@ -64,14 +77,20 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'grand-finale',
-    name: 'Chess Master Challenge',
-    description: 'The ultimate test! Use all your chess knowledge to reach the exit.',
+    name: '👑 The Dragon\'s Lair Challenge',
+    description: 'Face the ultimate quest! Collect all the dragon\'s treasures and prove you\'re a true Chess Adventure Master!',
     boardSize: { width: 6, height: 6 },
     player: {
       position: { x: 0, y: 5 },
       pieceType: 'knight'
     },
-    coins: [],
+    coins: [
+      { x: 0, y: 2 },  // Dragon treasure 1
+      { x: 3, y: 1 },  // Dragon treasure 2  
+      { x: 5, y: 3 },  // Dragon treasure 3
+      { x: 2, y: 4 },  // Friend rescue 1
+      { x: 4, y: 1 }   // Friend rescue 2
+    ],
     exit: { x: 5, y: 0 },
     enemies: [
       { type: 'slime', position: { x: 1, y: 4 } },

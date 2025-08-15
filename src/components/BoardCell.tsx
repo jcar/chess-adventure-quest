@@ -24,13 +24,32 @@ const BoardCell: React.FC<BoardCellProps> = ({
   const getEntityEmoji = (entity: Entity): string => {
     switch (entity.type) {
       case 'player':
-        return entity.pieceType === 'knight' ? '♘' : '♙';
+        // Return correct emoji for each chess piece
+        switch (entity.pieceType) {
+          case 'pawn': return '♙';
+          case 'knight': return '♘';
+          case 'rook': return '♖';
+          case 'bishop': return '♗';
+          case 'queen': return '♕';
+          case 'king': return '♔';
+          default: return '♙';
+        }
       case 'coin':
         return '🪙';
+      case 'treasure':
+        return '💎';
+      case 'friend':
+        return '🧙‍♀️'; // Friendly character to rescue
       case 'exit':
         return '🚪';
       case 'slime':
         return '🟢';
+      case 'goblin':
+        return '👹';
+      case 'boss':
+        return '🐉';
+      case 'danger':
+        return '⚡';
       default:
         return '';
     }

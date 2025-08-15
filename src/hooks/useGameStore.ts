@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { GameStore, Entity, Position, GameState } from '../types/game';
-import { getLevel, getTotalLevels } from '../levels/levelData';
+import { getLevel, getTotalLevels } from '../data/curriculum';
 import { calculateEnemyMoves, checkPlayerCaptured } from '../game/enemyAI';
 import { isValidMove } from '../game/movement';
 
@@ -15,11 +15,14 @@ export const useGameStore = create<GameStore>((set, get) => ({
   totalCoins: 0,
 
   initializeLevel: (levelIndex: number) => {
+    console.log(`Initializing level ${levelIndex}...`);
     const level = getLevel(levelIndex);
     if (!level) {
       console.error(`Level ${levelIndex} not found`);
       return;
     }
+    
+    console.log(`Found level:`, level);
 
     const board: Entity[] = [];
     
@@ -31,12 +34,30 @@ export const useGameStore = create<GameStore>((set, get) => ({
       pieceType: level.player.pieceType
     });
 
-    // Add coins
-    level.coins.forEach((coinPos, index) => {
+    // Add coins (legacy support)
+    level.coins?.forEach((coinPos, index) => {
       board.push({
         id: `coin-${index}`,
         type: 'coin',
         position: { ...coinPos }
+      });
+    });
+    
+    // Add treasures (new system)
+    level.treasures?.forEach((treasurePos, index) => {
+      board.push({
+        id: `treasure-${index}`,
+        type: 'treasure',
+        position: { ...treasurePos }
+      });
+    });
+    
+    // Add friends (new system)
+    level.friends?.forEach((friendPos, index) => {
+      board.push({
+        id: `friend-${index}`,
+        type: 'friend',
+        position: { ...friendPos }
       });
     });
 
@@ -47,14 +68,18 @@ export const useGameStore = create<GameStore>((set, get) => ({
       position: { ...level.exit }
     });
 
-    // Add enemies
-    level.enemies.forEach((enemy, index) => {
+    // Add enemies - handle both old and new enemy structure
+    level.enemies?.forEach((enemy, index) => {
       board.push({
         id: `${enemy.type}-${index}`,
-        type: enemy.type as 'slime',
+        type: enemy.type as 'slime' | 'goblin',
         position: { ...enemy.position }
       });
     });
+
+    const totalCollectibles = (level.coins?.length || 0) + (level.treasures?.length || 0);
+    
+    console.log(`Board initialized with ${board.length} entities`);
 
     set({
       currentLevel: levelIndex,
@@ -63,9 +88,11 @@ export const useGameStore = create<GameStore>((set, get) => ({
       playerPosition: { ...level.player.position },
       playerPieceType: level.player.pieceType,
       coinsCollected: 0,
-      totalCoins: level.coins.length,
+      totalCoins: totalCollectibles,
       gameState: 'playing'
     });
+    
+    console.log(`Game state set to 'playing'`);
   },
 
   movePlayer: (newPosition: Position): boolean => {
@@ -102,16 +129,17 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const playerEntity = newBoard.find(e => e.id === 'player')!;
     playerEntity.position = { ...newPosition };
 
-    // Check for coin collection
-    const coinAtPosition = newBoard.find(entity => 
-      entity.type === 'coin' && 
+    // Check for collectible collection (coins, treasures, friends)
+    const collectibleAtPosition = newBoard.find(entity => 
+      (entity.type === 'coin' || entity.type === 'treasure' || entity.type === 'friend') && 
       entity.position.x === newPosition.x && 
       entity.position.y === newPosition.y
     );
     
-    if (coinAtPosition) {
-      newBoard = newBoard.filter(entity => entity.id !== coinAtPosition.id);
+    if (collectibleAtPosition) {
+      newBoard = newBoard.filter(entity => entity.id !== collectibleAtPosition.id);
       newCoinsCollected++;
+      console.log(`Collected ${collectibleAtPosition.type} at (${newPosition.x}, ${newPosition.y})`);
     }
 
     // Check for enemy capture (if player moved to enemy position)

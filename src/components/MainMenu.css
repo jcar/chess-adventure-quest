@@ -137,6 +137,7 @@
 }
 
 .world-button {
+  position: relative;
   width: 100%;
   padding: 2rem;
   background: none;
@@ -147,13 +148,14 @@
   color: #2c3e50;
 }
 
-.world-button:hover {
+.world-button:hover:not(.disabled) {
   background: rgba(78, 205, 196, 0.1);
 }
 
 .world-button.disabled {
   cursor: not-allowed;
   color: #bdc3c7;
+  background: rgba(149, 165, 166, 0.1);
 }
 
 .world-button h3 {
@@ -174,11 +176,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(149, 165, 166, 0.9);
+  background: rgba(149, 165, 166, 0.95);
   color: white;
-  padding: 1rem;
-  border-radius: 10px;
+  padding: 1.5rem;
+  border-radius: 15px;
   text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .lock-icon {

@@ -8,16 +8,24 @@ const MainMenu: React.FC = () => {
   const { initializeLevel } = useGameStore();
 
   const handleStartLevel = (levelIndex: number) => {
-    initializeLevel(levelIndex);
+    console.log(`Starting level ${levelIndex}`);
+    try {
+      initializeLevel(levelIndex);
+    } catch (error) {
+      console.error('Error starting level:', error);
+    }
   };
 
   // Display available worlds from the curriculum
   const worldCards = [];
   let currentLevelIndex = 0;
   
-  for (const world of WORLDS) {
-    const isUnlocked = world.unlocked || currentLevelIndex === 0; // First world always unlocked
+  for (let i = 0; i < WORLDS.length; i++) {
+    const world = WORLDS[i];
+    const isUnlocked = world.unlocked || i === 0; // First world (index 0) is always unlocked
     const worldProgress = `${world.levelsCompleted}/${world.totalLevels}`;
+    
+    console.log(`World ${i}: ${world.name}, unlocked: ${isUnlocked}, levelIndex: ${currentLevelIndex}`);
     
     worldCards.push(
       <div key={world.id} className={`world-card ${!isUnlocked ? 'locked' : ''}`}>
@@ -59,6 +67,11 @@ const MainMenu: React.FC = () => {
     currentLevelIndex += world.totalLevels;
   }
 
+  // Debug info
+  console.log('All WORLDS:', WORLDS);
+  console.log('First world unlocked?', WORLDS[0].unlocked);
+  console.log('Total levels:', getTotalLevels());
+  
   return (
     <div className="main-menu">
       <div className="hero-section">

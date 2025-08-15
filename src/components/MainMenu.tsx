@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGameStore } from '../hooks/useGameStore';
-import { getTotalLevels } from '../levels/levelData';
+import { getTotalLevels } from '../data/curriculum';
+import { WORLDS } from '../data/worlds';
 import './MainMenu.css';
 
 const MainMenu: React.FC = () => {
@@ -10,56 +11,52 @@ const MainMenu: React.FC = () => {
     initializeLevel(levelIndex);
   };
 
-  // Adventure-themed world names and descriptions
-  const adventures = [
-    { 
-      name: "🌟 Knight's First Quest", 
-      description: "Meet Sir Hopscotch and learn to jump like a brave knight!",
-      emoji: "♘",
-      world: "Sunny Meadows"
-    },
-    { 
-      name: "⚡ Pawn's Big Adventure", 
-      description: "Join Pawny the Brave and learn to march forward!",
-      emoji: "♙", 
-      world: "Rainbow Valley"
-    },
-    { 
-      name: "🗡️ Knight vs. Silly Slimes", 
-      description: "Help Sir Hopscotch outsmart the giggly green slimes!",
-      emoji: "♘",
-      world: "Giggle Forest"
-    },
-    { 
-      name: "🏆 Pawn's Heroic Journey", 
-      description: "Guide Pawny through the maze to rescue friends!",
-      emoji: "♙",
-      world: "Crystal Caves"
-    },
-    { 
-      name: "👑 Chess Master Challenge", 
-      description: "The ultimate quest! Can you become a Chess Hero?",
-      emoji: "🏰",
-      world: "Dragon's Lair"
-    }
-  ];
-
-  const levelButtons = [];
-  for (let i = 0; i < Math.min(getTotalLevels(), adventures.length); i++) {
-    const adventure = adventures[i];
-    levelButtons.push(
-      <div key={i} className="adventure-card">
-        <div className="world-badge">{adventure.world}</div>
+  // Display available worlds from the curriculum
+  const worldCards = [];
+  let currentLevelIndex = 0;
+  
+  for (const world of WORLDS) {
+    const isUnlocked = world.unlocked || currentLevelIndex === 0; // First world always unlocked
+    const worldProgress = `${world.levelsCompleted}/${world.totalLevels}`;
+    
+    worldCards.push(
+      <div key={world.id} className={`world-card ${!isUnlocked ? 'locked' : ''}`}>
+        <div className="world-header">
+          <div className="world-emoji">{world.emoji}</div>
+          <div className="world-progress">{worldProgress}</div>
+        </div>
         <button
-          onClick={() => handleStartLevel(i)}
-          className="adventure-button"
+          onClick={() => isUnlocked ? handleStartLevel(currentLevelIndex) : null}
+          className={`world-button ${!isUnlocked ? 'disabled' : ''}`}
+          disabled={!isUnlocked}
         >
-          <div className="adventure-emoji">{adventure.emoji}</div>
-          <h3>{adventure.name}</h3>
-          <p>{adventure.description}</p>
+          <h3>{world.name}</h3>
+          <p>{world.description}</p>
+          {!isUnlocked && (
+            <div className="lock-overlay">
+              <span className="lock-icon">🔒</span>
+              <p>Complete previous world to unlock!</p>
+            </div>
+          )}
         </button>
+        
+        {isUnlocked && (
+          <div className="level-preview">
+            <p className="level-count">{world.totalLevels} levels of adventure!</p>
+            {currentLevelIndex < getTotalLevels() && (
+              <button 
+                onClick={() => handleStartLevel(currentLevelIndex)}
+                className="start-world-button"
+              >
+                ✨ Start Adventure
+              </button>
+            )}
+          </div>
+        )}
       </div>
     );
+    
+    currentLevelIndex += world.totalLevels;
   }
 
   return (
@@ -77,10 +74,13 @@ const MainMenu: React.FC = () => {
         </div>
       </div>
       
-      <div className="level-selection">
-        <h2>🗺️ Choose Your Next Adventure!</h2>
-        <div className="adventure-grid">
-          {levelButtons}
+      <div className="world-selection">
+        <h2>🗺️ Choose Your World Adventure!</h2>
+        <div className="curriculum-progress">
+          <p>🎆 Epic Journey: {getTotalLevels()} levels across {WORLDS.length} magical worlds! 🎆</p>
+        </div>
+        <div className="world-grid">
+          {worldCards}
         </div>
       </div>
 

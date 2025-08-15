@@ -1,37 +1,26 @@
 import React from 'react';
 import { useGameStore } from '../hooks/useGameStore';
-import { getTotalLevels } from '../levels/levelData';
+import { getTotalLevels } from '../data/curriculum';
+import { getRandomVictoryQuote, getRandomEncouragement } from '../data/characters';
 import './GameModal.css';
 
 const GameModal: React.FC = () => {
   const {
     gameState,
     currentLevel,
+    playerPieceType,
     resetLevel,
     nextLevel,
     setGameState
   } = useGameStore();
 
-  const getVictoryMessage = (level: number): string => {
-    const messages = [
-      "🐴 Sir Hopscotch is so proud! You mastered the Knight's L-shaped leap!",
-      "⚡ Pawny the Brave cheers for you! You learned to march like a true warrior!",
-      "🎭 The Silly Slimes are impressed by your clever moves!",
-      "🏔️ You navigated the Crystal Caves like a true adventurer!",
-      "🐉 Even the Dragon bows to your incredible chess mastery!"
-    ];
-    return messages[level] || "🌟 You're an amazing Chess Hero! 🌟";
+  // Use the comprehensive character system for messages
+  const getVictoryMessage = (): string => {
+    return getRandomVictoryQuote(playerPieceType);
   };
 
-  const getEncouragementTip = (level: number): string => {
-    const tips = [
-      "Remember: Knights jump in an L-shape - 2 squares, then 1 square to the side!",
-      "Tip: Pawns can capture diagonally - use this power to defeat enemies!",
-      "Strategy: Think about which slimes to avoid and which ones to capture!",
-      "Hint: Plan your path carefully - sometimes the longest route is the safest!",
-      "Remember: Great heroes use all their chess powers together!"
-    ];
-    return tips[level] || "Every chess master started as a beginner - you've got this!";
+  const getEncouragementTip = (): string => {
+    return getRandomEncouragement(playerPieceType);
   };
 
   if (gameState !== 'won' && gameState !== 'lost') {
@@ -70,7 +59,7 @@ const GameModal: React.FC = () => {
               </p>
               <div className="victory-details">
                 <p className="hero-praise">
-                  {getVictoryMessage(currentLevel)}
+                  {getVictoryMessage()}
                 </p>
               </div>
               {isLastLevel && (
@@ -92,7 +81,7 @@ const GameModal: React.FC = () => {
                 💪 Try a different path - I believe in you! 💪
               </p>
               <div className="encouragement-tip">
-                <p>💡 {getEncouragementTip(currentLevel)}</p>
+                <p>💡 {getEncouragementTip()}</p>
               </div>
             </>
           )}

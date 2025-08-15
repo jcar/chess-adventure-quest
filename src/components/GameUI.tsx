@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGameStore } from '../hooks/useGameStore';
-import { getLevel } from '../levels/levelData';
+import { getLevel } from '../data/curriculum';
+import { getCharacter } from '../data/characters';
 import './GameUI.css';
 
 const GameUI: React.FC = () => {
@@ -22,31 +23,26 @@ const GameUI: React.FC = () => {
     setGameState('menu');
   };
 
-  const getCharacterInfo = (pieceType: string) => {
-    if (pieceType === 'knight') {
-      return {
-        icon: '♘',
-        name: 'Sir Hopscotch',
-        description: '🐴 "I jump in L-shapes to hop over obstacles! Follow my hoofsteps!"',
-        power: 'L-shaped Leap Power'
-      };
-    } else {
-      return {
-        icon: '♙',
-        name: 'Pawny the Brave',
-        description: '⚡ "I march forward bravely and can capture enemies diagonally!"',
-        power: 'Forward March & Diagonal Strike'
-      };
+  // Use the comprehensive character system
+  const character = getCharacter(playerPieceType);
+  
+  // Get world theme from level data
+  const getWorldTheme = (): string => {
+    if (!level) return '✨ Magical Realm';
+    
+    switch (level.worldId) {
+      case 'meadow-tutorial': return '🌻 Sunny Meadows';
+      case 'goblin-woods': return '🌲 Goblin Woods';
+      case 'glow-caves': return '💎 Glow Caves';
+      case 'royal-keep': return '🏰 Royal Keep';
+      case 'tactic-town': return '⚔️ Tactic Town';
+      case 'endgame-arena': return '🏆 Endgame Arena';
+      case 'castle-siege': return '⚔️ Castle Siege';
+      default: return '✨ Magical Realm';
     }
   };
 
-  const getWorldTheme = (levelIndex: number): string => {
-    const worlds = ['🌻 Sunny Meadows', '🌈 Rainbow Valley', '🌲 Giggle Forest', '💎 Crystal Caves', '🏔️ Dragon\'s Lair'];
-    return worlds[levelIndex] || '✨ Magical Realm';
-  };
-
-  const character = getCharacterInfo(playerPieceType);
-  const worldTheme = getWorldTheme(currentLevel);
+  const worldTheme = getWorldTheme();
 
   return (
     <div className="game-ui">
@@ -59,10 +55,10 @@ const GameUI: React.FC = () => {
         
         <div className="hero-info">
           <div className="character-card">
-            <span className="character-icon">{character.icon}</span>
+            <span className="character-icon">{character.emoji}</span>
             <div className="character-details">
               <h4 className="character-name">{character.name}</h4>
-              <p className="character-power">✨ {character.power}</p>
+              <p className="character-power">✨ {character.ability}</p>
             </div>
           </div>
           
@@ -77,7 +73,7 @@ const GameUI: React.FC = () => {
         <div className="character-guidance">
           <div className="speech-bubble">
             <p className="character-speech">
-              {character.description}
+              {character.greeting}
             </p>
           </div>
           <p className="helpful-hint">

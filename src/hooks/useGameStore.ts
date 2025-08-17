@@ -15,14 +15,15 @@ export const useGameStore = create<GameStore>((set, get) => ({
   totalCoins: 0,
 
   initializeLevel: (levelIndex: number) => {
-    console.log(`Initializing level ${levelIndex}...`);
-    const level = getLevel(levelIndex);
-    if (!level) {
-      console.error(`Level ${levelIndex} not found`);
-      return;
-    }
-    
-    console.log(`Found level:`, level);
+    try {
+      console.log(`Initializing level ${levelIndex}...`);
+      const level = getLevel(levelIndex);
+      if (!level) {
+        console.error(`Level ${levelIndex} not found`);
+        return;
+      }
+      
+      console.log(`Found level:`, level);
 
     const board: Entity[] = [];
     
@@ -93,6 +94,10 @@ export const useGameStore = create<GameStore>((set, get) => ({
     });
     
     console.log(`Game state set to 'playing'`);
+    } catch (error) {
+      console.error('Error in initializeLevel:', error);
+      throw error;
+    }
   },
 
   movePlayer: (newPosition: Position): boolean => {

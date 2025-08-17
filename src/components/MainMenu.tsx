@@ -5,12 +5,14 @@ import { WORLDS } from '../data/worlds';
 import './MainMenu.css';
 
 const MainMenu: React.FC = () => {
-  const { initializeLevel } = useGameStore();
+  const { initializeLevel, gameState } = useGameStore();
 
   const handleStartLevel = (levelIndex: number) => {
     console.log(`Starting level ${levelIndex}`);
+    console.log('Current gameState before:', gameState);
     try {
       initializeLevel(levelIndex);
+      console.log('initializeLevel called successfully');
     } catch (error) {
       console.error('Error starting level:', error);
     }
@@ -24,8 +26,9 @@ const MainMenu: React.FC = () => {
     const world = WORLDS[i];
     const isUnlocked = world.unlocked || i === 0; // First world (index 0) is always unlocked
     const worldProgress = `${world.levelsCompleted}/${world.totalLevels}`;
+    const worldStartLevelIndex = currentLevelIndex; // Store the starting level index for this world
     
-    console.log(`World ${i}: ${world.name}, unlocked: ${isUnlocked}, levelIndex: ${currentLevelIndex}`);
+    console.log(`World ${i}: ${world.name}, unlocked: ${isUnlocked}, levelIndex: ${worldStartLevelIndex}`);
     
     worldCards.push(
       <div key={world.id} className={`world-card ${!isUnlocked ? 'locked' : ''}`}>
@@ -34,7 +37,7 @@ const MainMenu: React.FC = () => {
           <div className="world-progress">{worldProgress}</div>
         </div>
         <button
-          onClick={() => isUnlocked ? handleStartLevel(currentLevelIndex) : null}
+          onClick={() => isUnlocked ? handleStartLevel(worldStartLevelIndex) : null}
           className={`world-button ${!isUnlocked ? 'disabled' : ''}`}
           disabled={!isUnlocked}
         >
@@ -51,9 +54,9 @@ const MainMenu: React.FC = () => {
         {isUnlocked && (
           <div className="level-preview">
             <p className="level-count">{world.totalLevels} levels of adventure!</p>
-            {currentLevelIndex < getTotalLevels() && (
+            {worldStartLevelIndex < getTotalLevels() && (
               <button 
-                onClick={() => handleStartLevel(currentLevelIndex)}
+                onClick={() => handleStartLevel(worldStartLevelIndex)}
                 className="start-world-button"
               >
                 ✨ Start Adventure
@@ -67,6 +70,7 @@ const MainMenu: React.FC = () => {
     currentLevelIndex += world.totalLevels;
   }
 
+  
   // Debug info
   console.log('All WORLDS:', WORLDS);
   console.log('First world unlocked?', WORLDS[0].unlocked);

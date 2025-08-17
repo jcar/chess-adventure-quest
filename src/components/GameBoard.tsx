@@ -15,6 +15,11 @@ const GameBoard: React.FC = () => {
     gameState,
     movePlayer
   } = useGameStore();
+  
+  // Don't render if board is not initialized
+  if (!board || board.length === 0 || !boardSize || !playerPosition) {
+    return <div className="game-board-container">Loading...</div>;
+  }
 
   const getEntityAt = useCallback((pos: Position) => {
     return board.find(entity => 
